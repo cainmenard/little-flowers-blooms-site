@@ -1,0 +1,11 @@
+{
+  "name": "little-flowers-blooms-site",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Website for The Little Flower's Blooms, a wedding and event florist in Lafayette, Louisiana.",
+  "type": "module",
+  "engines": { "node": ">=20" },
+  "scripts": {
+    "dev": "npx vercel dev"
+  }
+}
