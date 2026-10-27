@@ -123,6 +123,49 @@
   var year = document.querySelector("[data-year]");
   if (year) year.textContent = String(new Date().getFullYear());
 
+  // French flower names. Any element with data-fr becomes a button that shows
+  // the French name on hover (mouse) or tap (phone). Tools on other pages call
+  // window.LFB.frenchify(container) after they draw new flower names.
+  window.LFB = window.LFB || {};
+  function closeFrench(except) {
+    document.querySelectorAll(".fr-name.is-open").forEach(function (b) {
+      if (b !== except) { b.classList.remove("is-open"); b.setAttribute("aria-expanded", "false"); }
+    });
+  }
+  function frenchify(root) {
+    (root || document).querySelectorAll("[data-fr]:not(.fr-name)").forEach(function (el) {
+      var btn = document.createElement("button");
+      btn.type = "button";
+      btn.className = "fr-name";
+      btn.setAttribute("aria-expanded", "false");
+      btn.textContent = el.textContent;
+      var tip = document.createElement("span");
+      tip.className = "fr-tip";
+      var said = document.createElement("span");
+      said.className = "visually-hidden";
+      said.textContent = ", in French: ";
+      var word = document.createElement("span");
+      word.lang = "fr";
+      word.textContent = el.getAttribute("data-fr");
+      tip.appendChild(said);
+      tip.appendChild(word);
+      btn.appendChild(tip);
+      btn.setAttribute("data-fr", el.getAttribute("data-fr"));
+      el.replaceWith(btn);
+    });
+  }
+  window.LFB.frenchify = frenchify;
+  frenchify(document);
+  document.addEventListener("click", function (e) {
+    var btn = e.target.closest(".fr-name");
+    if (!btn) { closeFrench(null); return; }
+    var open = !btn.classList.contains("is-open");
+    closeFrench(btn);
+    btn.classList.toggle("is-open", open);
+    btn.setAttribute("aria-expanded", open ? "true" : "false");
+  });
+  document.addEventListener("keydown", function (e) { if (e.key === "Escape") closeFrench(null); });
+
   // Inquiry form
   var form = document.getElementById("inquiry");
   if (!form) return;
@@ -132,7 +175,8 @@
   var submitBtn = form.querySelector('button[type="submit"]');
   form.elements.started.value = String(Date.now());
 
-  // Preselect event type from ?event=Wedding
+  // Prefill from the link that brought them here. The planning tools send
+  // ?event=Wedding&date=2027-04-17&count=26%20pieces&needs=Bouquets,Corsages&notes=...
   var params = new URLSearchParams(window.location.search);
   var preset = params.get("event");
   if (preset) {
@@ -144,6 +188,27 @@
   var dateInput = form.elements.date;
   var today = new Date();
   dateInput.min = new Date(today.getTime() - today.getTimezoneOffset() * 60000).toISOString().slice(0, 10);
+
+  var prefilled = false;
+  var presetDate = params.get("date");
+  if (presetDate && /^\d{4}-\d{2}-\d{2}$/.test(presetDate) && presetDate >= dateInput.min) {
+    dateInput.value = presetDate;
+  }
+  ["count", "notes"].forEach(function (key) {
+    var v = params.get(key);
+    if (v && form.elements[key] && !form.elements[key].value) {
+      form.elements[key].value = v.slice(0, Number(form.elements[key].getAttribute("maxlength")) || 2000);
+      prefilled = true;
+    }
+  });
+  (params.get("needs") || "").split(",").forEach(function (need) {
+    need = need.trim();
+    if (!need) return;
+    var box = form.querySelector('input[name="needs"][value="' + need.replace(/"/g, "") + '"]');
+    if (box) { box.checked = true; prefilled = true; }
+  });
+  var prefillNote = document.getElementById("prefill-note");
+  if (prefilled && prefillNote) prefillNote.hidden = false;
 
   function showError(message) {
     errorBox.textContent = message;

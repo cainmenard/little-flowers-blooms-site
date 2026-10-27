@@ -20,7 +20,7 @@
 <link rel="icon" href="/assets/favicon.svg" type="image/svg+xml">
 <link rel="preload" href="/assets/fonts/cormorant-garamond-latin-300-normal.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="preload" href="/assets/fonts/jost-latin-400-normal.woff2" as="font" type="font/woff2" crossorigin>
-<link rel="stylesheet" href="/assets/styles.css?v=5661dba1">
+<link rel="stylesheet" href="/assets/styles.css?v=156e3f96">
 <script>document.documentElement.classList.add("js")</script>
 <script type="application/ld+json">
 {
@@ -275,6 +275,49 @@
     </div>
   </section>
 
+  <section id="meanings" class="section" aria-labelledby="mean-h">
+    <div class="wrap">
+      <div class="section-head reveal">
+        <div style="max-width: 720px">
+          <span class="label">Say it with flowers</span>
+          <h2 id="mean-h" class="title">What should your flowers say?</h2>
+          <p class="lede" style="margin-top: 18px; max-width: 620px">Victorians sent whole messages in bouquets. Pick what you want to say and who it's for, and see what their flower dictionary says to send.</p>
+        </div>
+      </div>
+      <form id="meanings-form" class="mean-form needs-js reveal" onsubmit="return false">
+        <fieldset>
+          <legend>I want to say</legend>
+          <div class="pills">
+            <label class="pill"><input type="radio" name="say" value="love" checked><span>I love you</span></label>
+            <label class="pill"><input type="radio" name="say" value="thanks"><span>Thank you</span></label>
+            <label class="pill"><input type="radio" name="say" value="congrats"><span>Congratulations</span></label>
+            <label class="pill"><input type="radio" name="say" value="birthday"><span>Happy birthday</span></label>
+            <label class="pill"><input type="radio" name="say" value="thinking"><span>Thinking of you</span></label>
+            <label class="pill"><input type="radio" name="say" value="getwell"><span>Get well soon</span></label>
+            <label class="pill"><input type="radio" name="say" value="sympathy"><span>With sympathy</span></label>
+          </div>
+        </fieldset>
+        <fieldset>
+          <legend>To</legend>
+          <div class="pills">
+            <label class="pill"><input type="radio" name="to" value="partner" checked><span>My partner</span></label>
+            <label class="pill"><input type="radio" name="to" value="mom"><span>Mom or grandma</span></label>
+            <label class="pill"><input type="radio" name="to" value="friend"><span>A friend</span></label>
+            <label class="pill"><input type="radio" name="to" value="grad"><span>A graduate</span></label>
+            <label class="pill"><input type="radio" name="to" value="teacher"><span>Teacher or coworker</span></label>
+            <label class="pill"><input type="radio" name="to" value="couple"><span>A couple</span></label>
+          </div>
+        </fieldset>
+      </form>
+      <div id="meanings-result" class="mean-result needs-js" aria-live="polite"></div>
+      <noscript><p class="muted">Turn on JavaScript to use the flower meanings finder, or <a href="/inquire">tell me what you want to say</a> and I'll pick the flowers.</p></noscript>
+      <details class="mean-trouble reveal">
+        <summary>Flowers that meant trouble in 1884</summary>
+        <p>In Kate Greenaway's <i>Language of Flowers</i>, yellow roses meant &ldquo;Decrease of love. Jealousy.&rdquo; Hydrangeas meant &ldquo;A boaster. Heartlessness.&rdquo; Peonies meant &ldquo;Shame. Bashfulness.&rdquo; Lavender meant &ldquo;Distrust.&rdquo; Nobody reads bouquets that way anymore, so order them freely.</p>
+      </details>
+    </div>
+  </section>
+
   <section class="section section--stone" aria-labelledby="order-h">
     <div class="wrap">
       <h2 id="order-h" class="spaced center reveal" style="margin-bottom: clamp(40px, 5vw, 72px)">How to order</h2>
@@ -283,7 +326,7 @@
         <li><span class="step-n">02</span><h3>Get a written quote</h3><p>Within 24 hours, every piece listed.</p></li>
         <li><span class="step-n">03</span><h3>Pickup or delivery</h3><p>Pickup in Lafayette, or delivery to nearby towns.</p></li>
       </ol>
-      <p class="center muted reveal" style="margin-top: 48px">Formal season, graduation week, Valentine's Day and Mother's Day fill up first. Order as early as you can for those dates.</p>
+      <p class="center muted reveal" style="margin-top: 48px">Formal season, graduation week, Valentine's Day and Mother's Day fill up first. Order as early as you can for those dates. <a href="/seasons">See what's in season each month.</a></p>
     </div>
   </section>
 
@@ -305,6 +348,8 @@
         <ul>
           <li><a href="/weddings">Weddings</a></li>
           <li><a href="/flowers">Events &amp; occasions</a></li>
+          <li><a href="/plan">Plan your flowers</a></li>
+          <li><a href="/seasons">In season</a></li>
           <li><a href="/about">About</a></li>
           <li><a href="/inquire">Inquire</a></li>
         </ul>
@@ -330,6 +375,7 @@
   <a class="btn" href="/inquire">Inquire</a>
   <a class="btn btn--line" href="https://ig.me/m/thelittleflowersblooms">Message me</a>
 </div>
-<script src="/assets/site.js?v=8f877364" defer></script>
+<script src="/assets/site.js?v=634a43e5" defer></script>
+<script src="/assets/tools.js?v=118e1298" defer></script>
 </body>
 </html>

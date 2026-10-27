@@ -13,11 +13,31 @@ Plain HTML and CSS with one Vercel serverless function for the inquiry form. No 
 | `/flowers` | `flowers/index.html` (events and occasions) |
 | `/about` | `about/index.html` |
 | `/inquire` | `inquire/index.html` (the form) |
+| `/plan` | `plan/index.html` (wedding party counter and photo palette) |
+| `/seasons` | `seasons/index.html` (what's in season by month) |
 | 404 | `404.html` |
 
 Shared styles are in `assets/styles.css`; the menu toggle and form logic are in `assets/site.js`. The header and footer are repeated in each page, so change them in every file.
 
 No prices are shown at launch. Prices for later are in the project's pricing guide.
+
+## Interactive tools
+
+All four live in `assets/tools.js` (data at the top of the file) plus a few lines in `assets/site.js`. None of them shows a price.
+
+| Tool | Where | What it does |
+| --- | --- | --- |
+| French flower names | every page | Any `<span data-fr="pivoine">peonies</span>` becomes a name that shows its French word on hover or tap. `site.js` handles it; the tools call `window.LFB.frenchify()` on what they draw. |
+| Flower meanings finder | `/flowers` (`#meanings`) | Pick a message and a recipient; shows three flowers with their meanings, quoted from Kate Greenaway's *Language of Flowers* (1884, [Project Gutenberg](https://www.gutenberg.org/ebooks/31591)). "Order this bouquet" opens the form with the picks in the notes. Edit `M` (flowers) and `MESSAGES` (which three to show) in `tools.js`. |
+| Wedding party counter | `/plan` (`#planner`) | Counts bouquets, boutonnieres, corsages and altar pieces from the party size, draws one little icon per piece, and builds the inquiry link. The plan is kept in the visitor's browser (`localStorage`, key `lfb-plan-v1`). |
+| Palette from a photo | `/plan` (`#palette`) | Reads up to 5 main colors from a photo in the browser (nothing is uploaded), names them, and suggests flowers per color family (`FAMILIES` in `tools.js`). The colors tint the planner icons and go into the inquiry notes. The example photo is a stock photo, credited on `/credits`. |
+| In season | `/seasons` (`#seasons`) | A month wheel plus a date checker. Flags dates within 2 weeks of Valentine's Day or Mother's Day. Edit `MONTHS` and `YEAR_ROUND` in `tools.js`. |
+
+The inquiry form reads `?event=`, `?date=`, `?count=`, `?needs=` (comma-separated, matching the checkbox values) and `?notes=` from the link, and shows a "Your plan is filled in" note.
+
+Where the season data comes from (cited on `/seasons`): Louisiana bloom times from LSU AgCenter articles (magnolias and gardenias, sasanqua camellias, Louisiana irises, cool-season flowers, zinnias) and the LSU Botanic Gardens "What's in Season" page; grower months from the FiftyFlowers wholesale availability chart. Once Amelie has a season of her own buying behind her, replace the grower months with what Spedale's and Sam's Club actually stock.
+
+When a script or stylesheet changes, update its `?v=` string in every page (the first 8 characters of the file's MD5) so browsers fetch the new copy.
 
 ## Inquiry form setup
 
