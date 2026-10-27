@@ -56,7 +56,7 @@ function normalize(feed) {
       id: String(p.id || ""),
       permalink,
       isVideo: p.mediaType === "VIDEO",
-      alt: shorten(p.altText, 200) || caption || "Flowers by Amelie, from Instagram",
+      alt: shorten(p.altText, 200) || caption || "Flowers by Amélie, from Instagram",
       images: imgs,
     });
     if (out.length >= MAX_POSTS) break;

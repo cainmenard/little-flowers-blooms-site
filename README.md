@@ -1,6 +1,6 @@
 # The Little Flower's Blooms
 
-Website for The Little Flower's Blooms, Amelie Menard's wedding and event florist business in Lafayette, Louisiana.
+Website for The Little Flower's Blooms, Amélie Menard's wedding and event florist business in Lafayette, Louisiana.
 
 Plain HTML and CSS with one Vercel serverless function for the inquiry form. No build step: Vercel serves the files as they are, and every push to `main` redeploys.
 
@@ -21,16 +21,16 @@ No prices are shown at launch. Prices for later are in the project's pricing gui
 
 ## Inquiry form setup
 
-The form posts to `api/inquire.js`, which emails each inquiry to Amelie through [Resend](https://resend.com). Until the two variables below are set, the form shows a message asking people to DM on Instagram instead.
+The form posts to `api/inquire.js`, which emails each inquiry to Amélie through [Resend](https://resend.com). Until the two variables below are set, the form shows a message asking people to DM on Instagram instead.
 
-1. Amelie creates a free Resend account with the email address where she wants inquiries.
+1. Amélie creates a free Resend account with the email address where she wants inquiries.
 2. In Resend, create an API key.
 3. In Vercel, open the project, then Settings > Environment Variables, and add:
    - `RESEND_API_KEY`: the key from step 2
    - `INQUIRY_TO_EMAIL`: the email from step 1
 4. Redeploy (Deployments > the latest one > Redeploy).
 
-Resend's test sender can only deliver to the address that owns the Resend account, which is why step 1 uses Amelie's email. Once the domain is connected, verify it in Resend and add `FROM_EMAIL` (for example `The Little Flower's Blooms <hello@thelittleflowersblooms.com>`) to send from her own domain.
+Resend's test sender can only deliver to the address that owns the Resend account, which is why step 1 uses Amélie's email. Once the domain is connected, verify it in Resend and add `FROM_EMAIL` (for example `The Little Flower's Blooms <hello@thelittleflowersblooms.com>`) to send from her own domain.
 
 Replying to an inquiry email replies to the client when they gave an email address.
 
@@ -51,7 +51,7 @@ Google Search Console: add a Domain property for `thelittleflowersblooms.com`, c
 
 ## Instagram gallery
 
-The galleries on Home and About show Amelie's latest Instagram posts once the feed is connected. Until then, or if the feed is ever down, they show the stock mood board, so nothing breaks.
+The galleries on Home and About show Amélie's latest Instagram posts once the feed is connected. Until then, or if the feed is ever down, they show the stock mood board, so nothing breaks.
 
 How it works: [Behold](https://behold.so) logs in to her Instagram and keeps the access token fresh. `api/instagram.js` reads Behold's JSON feed and Vercel's CDN caches the result for 6 hours, so Behold sees a few requests a day no matter how many people visit. `assets/site.js` swaps the stock photos for her posts on any section marked `data-instagram`; elements with `data-ig-text` change their wording at the same time ("Mood board · stock photos" becomes "Recent work · Instagram").
 
@@ -59,9 +59,9 @@ Behold's free plan: 1 feed, her latest 6 posts, updated once a day, 1,200 feed r
 
 ### Connecting it
 
-1. In the Instagram app on Amelie's phone: profile > Edit profile > "Switch to professional account" (or menu > Settings and activity > "Account type and tools"). Pick the Florist category and **Business** or **Creator**. It's free and can be switched back.
+1. In the Instagram app on Amélie's phone: profile > Edit profile > "Switch to professional account" (or menu > Settings and activity > "Account type and tools"). Pick the Florist category and **Business** or **Creator**. It's free and can be switched back.
 2. Go to [behold.so](https://behold.so), sign up (free) with thelittleflowersblooms@gmail.com.
-3. Add a source: Instagram, basic (no Facebook page needed). Amelie logs in to Instagram there and approves access.
+3. Add a source: Instagram, basic (no Facebook page needed). Amélie logs in to Instagram there and approves access.
 4. Create a feed of type **JSON** from that source. Copy its URL (`https://feeds.behold.so/...`).
 5. In Behold's feed settings, add `www.thelittleflowersblooms.com` to the allowed domains if it asks (the site's server fetches the feed, so this is optional).
 6. In Vercel: Settings > Environment Variables, add `BEHOLD_FEED_URL` = the feed URL, for Production. Redeploy.
@@ -72,17 +72,17 @@ If she ever changes her Instagram password, reauthorize the source in Behold.
 
 ## Photos (stock for now)
 
-The site is a work in progress. Every photo on it is a stock image from [Unsplash](https://unsplash.com), used under the [Unsplash License](https://unsplash.com/license) (free for commercial use, no attribution required). None of them show Amelie's own work, and the site says so in three places:
+The site is a work in progress. Every photo on it is a stock image from [Unsplash](https://unsplash.com), used under the [Unsplash License](https://unsplash.com/license) (free for commercial use, no attribution required). None of them show Amélie's own work, and the site says so in three places:
 
 - a blush notice bar above the ticker on every page, linking to `/credits`
 - a line in every page footer
 - `/credits` (`credits/index.html`), which lists each photo, its photographer and the page it's on
 
-The three photo galleries are labeled "Mood board · stock photos", and the About page photo has a caption saying a portrait of Amelie is coming.
+The three photo galleries are labeled "Mood board · stock photos", and the About page photo has a caption saying a portrait of Amélie is coming.
 
 Files are in `assets/photos/`, three widths per photo (`-480`, `-800`, `-1400`, WebP), served with `srcset` so phones download the small one.
 
-### Replacing a stock photo with one of Amelie's
+### Replacing a stock photo with one of Amélie's
 
 1. Export her photo as WebP or JPEG at 480, 800 and 1400 px wide (each under about 300 KB).
 2. Put them in `assets/photos/` with a descriptive name, for example `blush-garden-rose-bridal-bouquet-480.webp`.
@@ -101,8 +101,8 @@ Editorial and minimal: Cormorant Garamond (light) for headlines, Jost for body a
 ## To do before launch
 
 - Confirm the delivery towns: Lafayette, Youngsville, Broussard, Scott, Carencro, Breaux Bridge (in every page footer band, the inquire page and the JSON-LD in `index.html`).
-- Confirm the occasion lists on `/flowers` match what Amelie makes.
-- Replace the stock photos with Amelie's own (see above), then remove the stock-photo notices.
+- Confirm the occasion lists on `/flowers` match what Amélie makes.
+- Replace the stock photos with Amélie's own (see above), then remove the stock-photo notices.
 - Add the client reviews section on the home page once there are quotes with permission (template is commented out in `index.html`).
 - Connect the domain in Vercel (Settings > Domains). `robots.txt`, `sitemap.xml` and the JSON-LD already point to `https://www.thelittleflowersblooms.com`.
 - Add the site to Google Search Console and submit the sitemap (steps under Search).
