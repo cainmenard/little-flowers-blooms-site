@@ -52,6 +52,12 @@ Each photo spot is a `<div class="photo">` with an HTML comment above it saying 
 
 Leave `loading="lazy"` off the first photo on each page so it shows right away.
 
+The home page hero uses a line illustration (`assets/botanical.svg`) until a hero photo is ready. To switch it, replace the `<img class="art" ...>` inside `.photo--art` with a regular photo `<img>` and remove the `photo--art` class.
+
+## Design
+
+Editorial and minimal: Cormorant Garamond (light) for headlines, Jost for body and spaced capital labels. Paper `#F6F3EE`, stone `#ECE7E0`, sage `#CBD2C3`, blush `#EBD5CD`, ink `#262B24`, rose accent `#8E4F4A`. Sections fade in on scroll, the top bar scrolls slowly, and petals drift over the hero; all of it switches off for visitors who set their device to reduce motion.
+
 ## To do before launch
 
 - Confirm the delivery towns: Lafayette, Youngsville, Broussard, Scott, Carencro, Breaux Bridge (in every page footer band, the inquire page and the JSON-LD in `index.html`).

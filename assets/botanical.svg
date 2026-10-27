@@ -1,0 +1,81 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="40 150 520 670" fill="none" stroke="#2B3328" stroke-opacity="0.92" stroke-width="1.1" stroke-linecap="round" stroke-linejoin="round">
+  <defs>
+    <g id="leaf"><path d="M0 0 C 14 -14, 40 -15, 58 0 C 40 15, 14 14, 0 0 Z"/><path d="M4 0 C 22 -1, 40 -1, 54 0" fill="none" stroke-opacity="0.45"/></g>
+    <g id="leaf-s"><path d="M0 0 C 9 -9, 26 -10, 38 0 C 26 10, 9 9, 0 0 Z"/><path d="M3 0 L 35 0" fill="none" stroke-opacity="0.45"/></g>
+    <path id="petal" d="M0 0 C 6 -10, 30 -15, 46 -11 L 50 -6 L 46.5 -2.5 L 51 2 L 46 8 C 30 13, 6 10, 0 0 Z"/>
+    <path id="petal-s" d="M0 0 C 4 -7, 20 -10, 30 -7 L 33 -3.5 L 30.5 -1 L 33 2 L 30 5 C 20 9, 4 7, 0 0 Z"/>
+  </defs>
+
+  <!-- stems -->
+  <path d="M300 612 C 296 500, 262 400, 214 262"/>
+  <path d="M303 612 C 312 482, 352 360, 398 214"/>
+  <path d="M299 612 C 292 520, 300 440, 318 352"/>
+  <path d="M305 612 C 332 534, 412 486, 470 418"/>
+  <path d="M294 612 C 250 560, 150 420, 100 300"/>
+  <path d="M301 612 C 300 566, 274 534, 248 508"/>
+
+  <!-- eucalyptus -->
+  <g fill="#C3CCBA" fill-opacity="0.8">
+    <ellipse cx="264" cy="552" rx="12" ry="10"/><ellipse cx="240" cy="566" rx="11" ry="9"/>
+    <ellipse cx="232" cy="506" rx="13" ry="11"/><ellipse cx="208" cy="522" rx="12" ry="10"/>
+    <ellipse cx="199" cy="456" rx="14" ry="12"/><ellipse cx="175" cy="472" rx="12" ry="10"/>
+    <ellipse cx="167" cy="402" rx="13" ry="11"/><ellipse cx="143" cy="418" rx="12" ry="10"/>
+    <ellipse cx="136" cy="347" rx="12" ry="10"/><ellipse cx="114" cy="362" rx="11" ry="9"/>
+    <ellipse cx="100" cy="292" rx="10" ry="9"/>
+  </g>
+
+  <!-- baby's breath sprig -->
+  <g stroke-width="0.9"><path d="M248 508 l -14 -18 M248 508 l -21 -3 M248 508 l -3 -22 M240 498 l -16 -4"/></g>
+  <g fill="#FBF9F4" stroke-width="0.9">
+    <circle cx="234" cy="490" r="4"/><circle cx="227" cy="505" r="3.6"/><circle cx="245" cy="486" r="3.4"/><circle cx="223" cy="494" r="3"/>
+  </g>
+
+  <!-- leaves on stems -->
+  <g fill="#C3CCBA" fill-opacity="0.8">
+    <use href="#leaf" transform="translate(288.7 513) rotate(-160)"/>
+    <use href="#leaf" transform="translate(273.5 447) rotate(-38)"/>
+    <use href="#leaf-s" transform="translate(252.9 377) rotate(-150)"/>
+    <use href="#leaf" transform="translate(336.6 419) rotate(-14)"/>
+    <use href="#leaf-s" transform="translate(358.9 340) rotate(-128)"/>
+    <use href="#leaf" transform="translate(375.9 511) rotate(24)"/>
+  </g>
+
+  <!-- blush cosmos -->
+  <g transform="translate(214 262) rotate(8)">
+    <g fill="#EBD5CD">
+      <use href="#petal"/><use href="#petal" transform="rotate(45)"/><use href="#petal" transform="rotate(90)"/><use href="#petal" transform="rotate(135)"/>
+      <use href="#petal" transform="rotate(180)"/><use href="#petal" transform="rotate(225)"/><use href="#petal" transform="rotate(270)"/><use href="#petal" transform="rotate(315)"/>
+    </g>
+    <circle r="9" fill="#D7B98A"/>
+    <g fill="#8E4F4A" stroke="none"><circle cx="-3" cy="-2" r="1.6"/><circle cx="3" cy="-3" r="1.6"/><circle cx="2" cy="3" r="1.6"/><circle cx="-3" cy="3" r="1.6"/></g>
+  </g>
+
+  <!-- white cosmos -->
+  <g transform="translate(398 214) rotate(28)">
+    <g fill="#FBF9F4">
+      <use href="#petal"/><use href="#petal" transform="rotate(45)"/><use href="#petal" transform="rotate(90)"/><use href="#petal" transform="rotate(135)"/>
+      <use href="#petal" transform="rotate(180)"/><use href="#petal" transform="rotate(225)"/><use href="#petal" transform="rotate(270)"/><use href="#petal" transform="rotate(315)"/>
+    </g>
+    <circle r="8.5" fill="#D7B98A"/>
+  </g>
+
+  <!-- small blush cosmos -->
+  <g transform="translate(470 418) rotate(-12)">
+    <g fill="#EBD5CD">
+      <use href="#petal-s"/><use href="#petal-s" transform="rotate(45)"/><use href="#petal-s" transform="rotate(90)"/><use href="#petal-s" transform="rotate(135)"/>
+      <use href="#petal-s" transform="rotate(180)"/><use href="#petal-s" transform="rotate(225)"/><use href="#petal-s" transform="rotate(270)"/><use href="#petal-s" transform="rotate(315)"/>
+    </g>
+    <circle r="5.5" fill="#D7B98A"/>
+  </g>
+
+  <!-- bud -->
+  <g transform="translate(318 352)">
+    <path d="M0 -4 C -12 -18, -9 -40, 0 -52 C 9 -40, 12 -18, 0 -4 Z" fill="#EBD5CD"/>
+    <path d="M-8 -2 C -6 -12, 6 -12, 8 -2 C 4 2, -4 2, -8 -2 Z" fill="#C3CCBA"/>
+  </g>
+
+  <!-- vase -->
+  <path d="M286 600 C 286 592, 314 592, 314 600 L 318 640 C 352 664, 366 730, 352 792 L 248 792 C 234 730, 248 664, 282 640 Z" fill="#E7E1D8"/>
+  <path d="M262 702 C 290 710, 318 710, 342 702" stroke-opacity="0.3"/>
+  <path d="M100 792 L 500 792" stroke-opacity="0.35"/>
+</svg>
