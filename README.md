@@ -34,6 +34,21 @@ Resend's test sender can only deliver to the address that owns the Resend accoun
 
 Replying to an inquiry email replies to the client when they gave an email address.
 
+## Search (SEO)
+
+What's in place:
+
+- A unique title and description on every page, each with "Lafayette, LA" (a Lafayette, Colorado florist competes for the same words).
+- Canonical URLs on the `www` address, Open Graph tags and a share image (`assets/og-image.jpg`, 1200 x 630, made from the site's own illustration, not a stock photo).
+- Structured data: `WebSite` and `Florist` on the home page (towns served, services, Instagram), `Service` on Weddings and Events & occasions. Check changes with Google's Rich Results Test.
+- `sitemap.xml` with `lastmod` dates. Update the date when a page changes; add every new page.
+- `/credits` and the 404 page are `noindex`, so stock-photo credits never show up in Google.
+- Fonts are served from this site, not Google Fonts, so pages render sooner.
+
+When adding a page: give it a title with the service and "Lafayette, LA", one `h1`, a `Service` JSON-LD block if it describes a service, a link from at least one existing page, and a line in `sitemap.xml`.
+
+Google Search Console: add a Domain property for `thelittleflowersblooms.com`, copy the TXT record Google gives you, add it in Vercel (Domains > thelittleflowersblooms.com > DNS Records, type TXT, name `@`), verify, then submit `https://www.thelittleflowersblooms.com/sitemap.xml`.
+
 ## Instagram gallery
 
 The galleries on Home and About show Amelie's latest Instagram posts once the feed is connected. Until then, or if the feed is ever down, they show the stock mood board, so nothing breaks.
@@ -90,7 +105,7 @@ Editorial and minimal: Cormorant Garamond (light) for headlines, Jost for body a
 - Replace the stock photos with Amelie's own (see above), then remove the stock-photo notices.
 - Add the client reviews section on the home page once there are quotes with permission (template is commented out in `index.html`).
 - Connect the domain in Vercel (Settings > Domains). `robots.txt`, `sitemap.xml` and the JSON-LD already point to `https://www.thelittleflowersblooms.com`.
-- Add the site to Google Search Console and submit the sitemap.
+- Add the site to Google Search Console and submit the sitemap (steps under Search).
 - Vercel's free Hobby plan is for non-commercial use only. A business site needs the Pro plan.
 
 ## Running locally
