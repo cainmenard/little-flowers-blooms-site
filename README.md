@@ -17,7 +17,13 @@ Plain HTML and CSS with one Vercel serverless function for the inquiry form. No 
 | `/seasons` | `seasons/index.html` (what's in season by month) |
 | 404 | `404.html` |
 
-Shared styles are in `assets/styles.css`; the menu toggle and form logic are in `assets/site.js`. The header and footer are repeated in each page, so change them in every file.
+Shared styles are in `assets/styles.css`; the menu toggle and form logic are in `assets/site.js`.
+
+### Navigation
+
+The header, footer, stock-photo note and phone action bar are repeated in every page, but they come from one place: `scripts/build-nav.py`. To add or rename a menu item, edit `MENU` (main menu and its drop-down links) or `FOOTER_COLS` in that file, then run `python3 scripts/build-nav.py` from the repo root and commit the pages it changed. A new page also needs a line in `PAGES` (which menu section it belongs to, and whether it gets the phone Inquire / Message bar).
+
+Menu: Weddings (Plan your order, Flower styles) · Occasions (Formals, graduations & gifts; Flower meanings) · In season · About · Inquire button. On desktop the sub-links drop down on hover or keyboard focus; in the phone menu they sit under each heading. On phones the ticker is hidden and the stock-photo note is shortened so the logo sits near the top.
 
 No prices are shown at launch. Prices for later are in the project's pricing guide.
 

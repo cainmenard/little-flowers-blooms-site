@@ -20,12 +20,12 @@
 <link rel="icon" href="/assets/favicon.svg" type="image/svg+xml">
 <link rel="preload" href="/assets/fonts/cormorant-garamond-latin-300-normal.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="preload" href="/assets/fonts/jost-latin-400-normal.woff2" as="font" type="font/woff2" crossorigin>
-<link rel="stylesheet" href="/assets/styles.css?v=156e3f96">
+<link rel="stylesheet" href="/assets/styles.css?v=6378c7dd">
 <script>document.documentElement.classList.add("js")</script>
 </head>
 <body>
 <a class="skip" href="#main">Skip to content</a>
-<p class="site-note">Site in progress: photos are Unsplash stock, not Amelie's work, except her Instagram posts. <a href="/credits">Photo credits</a></p>
+<p class="site-note"><span class="note-long">Site in progress: photos are Unsplash stock, not Amelie's work, except her Instagram posts.</span><span class="note-short">Stock photos for now, not Amelie's work.</span> <a href="/credits">Photo credits</a></p>
 <div class="ticker" aria-hidden="true">
   <div class="ticker-track">
     <span>Wedding &amp; event flowers</span><span>Lafayette, Louisiana</span><span>Written quotes within 24 hours</span><span>Delivering across Acadiana</span><span>Made by hand by Amelie</span>
@@ -37,13 +37,32 @@
 <header class="site-header">
   <div class="header-inner">
     <nav id="site-nav" class="site-nav" aria-label="Main">
-      <ul>
-        <li><a href="/weddings">Weddings</a></li>
-        <li><a href="/flowers">Events &amp; occasions</a></li>
-        <li><a href="/about">About</a></li>
-        <li class="nav-inquire"><a href="/inquire" aria-current="page">Inquire</a></li>
+      <ul class="nav-list">
+        <li class="nav-item has-sub">
+          <a href="/weddings">Weddings</a>
+          <ul class="nav-sub">
+            <li><a href="/plan">Plan your order</a></li>
+            <li><a href="/weddings#styles">Flower styles</a></li>
+          </ul>
+        </li>
+        <li class="nav-item has-sub">
+          <a href="/flowers">Occasions</a>
+          <ul class="nav-sub">
+            <li><a href="/flowers#occasions">Formals, graduations &amp; gifts</a></li>
+            <li><a href="/flowers#meanings">Flower meanings</a></li>
+          </ul>
+        </li>
+        <li class="nav-item">
+          <a href="/seasons">In season</a>
+        </li>
+        <li class="nav-item">
+          <a href="/about">About</a>
+        </li>
       </ul>
-      <p class="nav-extra">Wedding and event flowers in Lafayette, Louisiana<br><a href="https://www.instagram.com/thelittleflowersblooms/">@thelittleflowersblooms</a></p>
+      <div class="nav-extra">
+        <a class="btn" href="/inquire" aria-current="page">Inquire</a>
+        <p>Wedding and event flowers in Lafayette, Louisiana<br><a href="https://www.instagram.com/thelittleflowersblooms/">@thelittleflowersblooms</a></p>
+      </div>
     </nav>
     <a class="brand" href="/">
       <span class="brand-name">The Little Flower's Blooms</span>
@@ -187,22 +206,28 @@
     <div class="footer-top">
       <p class="footer-mark">The Little Flower's Blooms<em>by Amelie · Lafayette, Louisiana</em></p>
       <div>
-        <h2>Explore</h2>
+        <h2>Weddings</h2>
         <ul>
-          <li><a href="/weddings">Weddings</a></li>
-          <li><a href="/flowers">Events &amp; occasions</a></li>
-          <li><a href="/plan">Plan your flowers</a></li>
+          <li><a href="/weddings">Wedding flowers</a></li>
+          <li><a href="/plan">Plan your order</a></li>
+          <li><a href="/weddings#styles">Flower styles</a></li>
+        </ul>
+      </div>
+      <div>
+        <h2>Occasions</h2>
+        <ul>
+          <li><a href="/flowers">Formals, graduations &amp; gifts</a></li>
+          <li><a href="/flowers#meanings">Flower meanings</a></li>
           <li><a href="/seasons">In season</a></li>
-          <li><a href="/about">About</a></li>
-          <li><a href="/inquire">Inquire</a></li>
         </ul>
       </div>
       <div>
         <h2>Say hello</h2>
         <ul>
+          <li><a href="/inquire">Inquire</a></li>
           <li><a href="mailto:hello@thelittleflowersblooms.com">hello@thelittleflowersblooms.com</a></li>
           <li><a href="https://www.instagram.com/thelittleflowersblooms/">Instagram</a></li>
-          <li><a href="/inquire">Send an inquiry</a></li>
+          <li><a href="/about">About Amelie</a></li>
         </ul>
       </div>
     </div>
