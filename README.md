@@ -64,7 +64,7 @@ Editorial and minimal: Cormorant Garamond (light) for headlines, Jost for body a
 - Confirm the occasion lists on `/flowers` match what Amelie makes.
 - Add photos (see above).
 - Add the client reviews section on the home page once there are quotes with permission (template is commented out in `index.html`).
-- Connect the domain in Vercel (Settings > Domains). `robots.txt`, `sitemap.xml` and the JSON-LD already point to `https://thelittleflowersblooms.com`.
+- Connect the domain in Vercel (Settings > Domains). `robots.txt`, `sitemap.xml` and the JSON-LD already point to `https://www.thelittleflowersblooms.com`.
 - Add the site to Google Search Console and submit the sitemap.
 - Vercel's free Hobby plan is for non-commercial use only. A business site needs the Pro plan.
 
