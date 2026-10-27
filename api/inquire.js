@@ -1,9 +1,9 @@
 // Inquiry form handler (Vercel serverless function).
-// Sends each inquiry to Amelie by email through Resend (https://resend.com).
+// Sends each inquiry to Amélie by email through Resend (https://resend.com).
 //
 // Environment variables (set in Vercel > Project > Settings > Environment Variables):
 //   RESEND_API_KEY     required. API key from resend.com
-//   INQUIRY_TO_EMAIL   required. Where inquiries go (Amelie's email)
+//   INQUIRY_TO_EMAIL   required. Where inquiries go (Amélie's email)
 //   FROM_EMAIL         optional. Sender once the domain is verified in Resend,
 //                      e.g. "The Little Flower's Blooms <hello@thelittleflowersblooms.com>".
 //                      Until then Resend's test sender is used, which can only

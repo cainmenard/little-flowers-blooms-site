@@ -13,6 +13,8 @@ import re
 
 ROOT = pathlib.Path(__file__).resolve().parent.parent
 IG = "https://www.instagram.com/thelittleflowersblooms/"
+TEL = "tel:+13378520857"
+PHONE = "(337) 852-0857"
 DM = "https://ig.me/m/thelittleflowersblooms"
 
 # Main menu: (label, href, section key, sub-links)
@@ -39,7 +41,7 @@ PAGES = {
 FOOTER_COLS = [
     ("Weddings", [("Wedding flowers", "/weddings"), ("Plan your order", "/plan"), ("Flower styles", "/weddings#styles")]),
     ("Occasions", [("Formals, graduations &amp; gifts", "/flowers"), ("Flower meanings", "/flowers#meanings"), ("In season", "/seasons")]),
-    ("Say hello", [("Inquire", "/inquire"), ("hello@thelittleflowersblooms.com", "mailto:hello@thelittleflowersblooms.com"), ("Instagram", IG), ("About Amelie", "/about")]),
+    ("Say hello", [("Inquire", "/inquire"), ("Call or text " + PHONE, TEL), ("hello@thelittleflowersblooms.com", "mailto:hello@thelittleflowersblooms.com"), ("Instagram", IG), ("About Amélie", "/about")]),
 ]
 
 
@@ -68,12 +70,12 @@ def header(rel, section):
       </ul>
       <div class="nav-extra">
         <a class="btn" href="/inquire"{inq_cur}>Inquire</a>
-        <p>Wedding and event flowers in Lafayette, Louisiana<br><a href="{IG}">@thelittleflowersblooms</a></p>
+        <p>Wedding and event flowers in Lafayette, Louisiana<br><a href="{TEL}">{PHONE}</a><br><a href="{IG}">@thelittleflowersblooms</a></p>
       </div>
     </nav>
     <a class="brand" href="/">
       <span class="brand-name">The Little Flower's Blooms</span>
-      <span class="brand-by">by Amelie</span>
+      <span class="brand-by">by Amélie</span>
     </a>
     <div class="header-actions">
       <a class="btn" href="/inquire"{inq_cur}>Inquire</a>
@@ -91,7 +93,7 @@ def footer():
     return f'''<footer class="site-footer">
   <div class="wrap">
     <div class="footer-top">
-      <p class="footer-mark">The Little Flower's Blooms<em>by Amelie · Lafayette, Louisiana</em></p>
+      <p class="footer-mark">The Little Flower's Blooms<em>by Amélie · Lafayette, Louisiana</em></p>
 {chr(10).join(cols)}
     </div>
     <div class="footer-base">
@@ -103,8 +105,10 @@ def footer():
 </footer>'''
 
 
-NOTE = ('<p class="site-note"><span class="note-long">Site in progress: photos are Unsplash stock, not Amelie\'s work, except her Instagram posts.</span>'
-        '<span class="note-short">Stock photos for now, not Amelie\'s work.</span> <a href="/credits">Photo credits</a></p>')
+def note(rel):
+    cur = ' aria-current="page"' if rel == "credits/index.html" else ""
+    return ('<p class="site-note"><span class="note-long">Site in progress: photos are Unsplash stock, not Amélie\'s work, except her Instagram posts.</span>'
+            f'<span class="note-short">Stock photos for now, not Amélie\'s work.</span> <a href="/credits"{cur}>Photo credits</a></p>')
 
 ACTION_BAR = f'''<div class="action-bar">
   <a class="btn" href="/inquire">Inquire</a>
@@ -119,7 +123,7 @@ def build():
         s = path.read_text()
         s, n1 = re.subn(r'<header class="site-header">.*?</header>', lambda m: header(rel, section), s, count=1, flags=re.S)
         s, n2 = re.subn(r'<footer class="site-footer">.*?</footer>', lambda m: footer(), s, count=1, flags=re.S)
-        s, n3 = re.subn(r'<p class="site-note">.*?</p>', lambda m: NOTE, s, count=1, flags=re.S)
+        s, n3 = re.subn(r'<p class="site-note">.*?</p>', lambda m: note(rel), s, count=1, flags=re.S)
         assert n1 == n2 == n3 == 1, (rel, n1, n2, n3)
         s = re.sub(r'<div class="action-bar">.*?</div>\n', "", s, flags=re.S)
         s = re.sub(r'<body( class="[^"]*")?>', lambda m: m.group(0).replace(' class="has-action-bar"', "").replace("has-action-bar", "").replace(' class=""', ""), s, count=1)
