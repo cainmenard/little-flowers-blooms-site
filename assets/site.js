@@ -54,6 +54,71 @@
     });
   });
 
+  // Instagram galleries: when the feed is connected, her latest posts replace
+  // the stock mood board. If the feed is off or down, the stock photos stay.
+  var igSections = document.querySelectorAll("[data-instagram]");
+  if (igSections.length && window.fetch) {
+    fetch("/api/instagram", { headers: { accept: "application/json" } })
+      .then(function (r) { return r.ok ? r.json() : null; })
+      .then(function (feed) {
+        if (!feed || !feed.posts || feed.posts.length < 3) return;
+        igSections.forEach(function (section) { showInstagram(section, feed); });
+      })
+      .catch(function () {});
+  }
+
+  function showInstagram(section, feed) {
+    var rail = section.querySelector(".rail");
+    if (!rail) return;
+    var limit = parseInt(section.getAttribute("data-instagram"), 10) || 6;
+    var sizes = rail.getAttribute("data-sizes") || "340px";
+    var end = rail.querySelector(".rail-end");
+    rail.querySelectorAll(":scope > .photo").forEach(function (el) { el.remove(); });
+
+    feed.posts.slice(0, limit).forEach(function (post) {
+      var link = document.createElement("a");
+      link.className = "ig-post";
+      link.href = post.permalink;
+      link.target = "_blank";
+      link.rel = "noopener";
+
+      var frame = document.createElement("div");
+      frame.className = "photo";
+      var img = document.createElement("img");
+      var mid = post.images[Math.min(1, post.images.length - 1)];
+      img.src = mid.url;
+      img.width = mid.width;
+      img.height = mid.height;
+      img.srcset = post.images.map(function (i) { return i.url + " " + i.width + "w"; }).join(", ");
+      img.sizes = sizes;
+      img.alt = post.alt;
+      img.loading = "lazy";
+      img.decoding = "async";
+      frame.appendChild(img);
+      link.appendChild(frame);
+
+      if (post.isVideo) {
+        var badge = document.createElement("span");
+        badge.className = "ig-badge";
+        badge.setAttribute("aria-hidden", "true");
+        badge.innerHTML = '<svg viewBox="0 0 12 12"><path d="M3 1.5v9l7.5-4.5z" fill="currentColor"/></svg>';
+        link.appendChild(badge);
+      }
+      var hint = document.createElement("span");
+      hint.className = "visually-hidden";
+      hint.textContent = post.isVideo ? " (video, opens Instagram)" : " (opens Instagram)";
+      link.appendChild(hint);
+
+      rail.insertBefore(link, end);
+    });
+
+    section.querySelectorAll("[data-ig-text]").forEach(function (el) {
+      el.textContent = el.getAttribute("data-ig-text");
+    });
+    rail.setAttribute("aria-label", "Latest posts from Instagram");
+    section.classList.add("is-instagram");
+  }
+
   // Footer year
   var year = document.querySelector("[data-year]");
   if (year) year.textContent = String(new Date().getFullYear());

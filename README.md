@@ -34,6 +34,27 @@ Resend's test sender can only deliver to the address that owns the Resend accoun
 
 Replying to an inquiry email replies to the client when they gave an email address.
 
+## Instagram gallery
+
+The galleries on Home and About show Amelie's latest Instagram posts once the feed is connected. Until then, or if the feed is ever down, they show the stock mood board, so nothing breaks.
+
+How it works: [Behold](https://behold.so) logs in to her Instagram and keeps the access token fresh. `api/instagram.js` reads Behold's JSON feed and Vercel's CDN caches the result for 6 hours, so Behold sees a few requests a day no matter how many people visit. `assets/site.js` swaps the stock photos for her posts on any section marked `data-instagram`; elements with `data-ig-text` change their wording at the same time ("Mood board · stock photos" becomes "Recent work · Instagram").
+
+Behold's free plan: 1 feed, her latest 6 posts, updated once a day, 1,200 feed requests a month (the 6-hour cache keeps the site far under that). Instagram only lets Business or Creator accounts connect to outside sites, so her account has to be one of those.
+
+### Connecting it
+
+1. In the Instagram app on Amelie's phone: profile > Edit profile > "Switch to professional account" (or menu > Settings and activity > "Account type and tools"). Pick the Florist category and **Business** or **Creator**. It's free and can be switched back.
+2. Go to [behold.so](https://behold.so), sign up (free) with thelittleflowersblooms@gmail.com.
+3. Add a source: Instagram, basic (no Facebook page needed). Amelie logs in to Instagram there and approves access.
+4. Create a feed of type **JSON** from that source. Copy its URL (`https://feeds.behold.so/...`).
+5. In Behold's feed settings, add `www.thelittleflowersblooms.com` to the allowed domains if it asks (the site's server fetches the feed, so this is optional).
+6. In Vercel: Settings > Environment Variables, add `BEHOLD_FEED_URL` = the feed URL, for Production. Redeploy.
+
+The feed URL is not a secret; it only returns her public posts.
+
+If she ever changes her Instagram password, reauthorize the source in Behold.
+
 ## Photos (stock for now)
 
 The site is a work in progress. Every photo on it is a stock image from [Unsplash](https://unsplash.com), used under the [Unsplash License](https://unsplash.com/license) (free for commercial use, no attribution required). None of them show Amelie's own work, and the site says so in three places:
