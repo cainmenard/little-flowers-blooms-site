@@ -34,25 +34,29 @@ Resend's test sender can only deliver to the address that owns the Resend accoun
 
 Replying to an inquiry email replies to the client when they gave an email address.
 
-## Adding photos
+## Photos (stock for now)
 
-Each photo spot is a `<div class="photo">` with an HTML comment above it saying which photo goes there. To fill one:
+The site is a work in progress. Every photo on it is a stock image from [Unsplash](https://unsplash.com), used under the [Unsplash License](https://unsplash.com/license) (free for commercial use, no attribution required). None of them show Amelie's own work, and the site says so in three places:
 
-1. Export the photo about 1600 px wide as JPEG or WebP, under 300 KB.
-2. Put it in `assets/photos/` with a descriptive name, for example `blush-garden-rose-bridal-bouquet-lafayette.jpg`.
-3. Put an image inside the placeholder and remove `aria-hidden="true"`:
+- a blush notice bar above the ticker on every page, linking to `/credits`
+- a line in every page footer
+- `/credits` (`credits/index.html`), which lists each photo, its photographer and the page it's on
 
-```html
-<div class="photo photo--arch">
-  <img src="/assets/photos/blush-garden-rose-bridal-bouquet-lafayette.jpg"
-       alt="Blush garden rose bridal bouquet for a wedding in Youngsville, Louisiana"
-       width="1600" height="2000" loading="lazy">
-</div>
-```
+The three photo galleries are labeled "Mood board · stock photos", and the About page photo has a caption saying a portrait of Amelie is coming.
 
-Leave `loading="lazy"` off the first photo on each page so it shows right away.
+Files are in `assets/photos/`, three widths per photo (`-480`, `-800`, `-1400`, WebP), served with `srcset` so phones download the small one.
 
-The home page hero uses a line illustration (`assets/botanical.svg`) until a hero photo is ready. To switch it, replace the `<img class="art" ...>` inside `.photo--art` with a regular photo `<img>` and remove the `photo--art` class.
+### Replacing a stock photo with one of Amelie's
+
+1. Export her photo as WebP or JPEG at 480, 800 and 1400 px wide (each under about 300 KB).
+2. Put them in `assets/photos/` with a descriptive name, for example `blush-garden-rose-bridal-bouquet-480.webp`.
+3. Find the photo spot: each one has an HTML comment above it starting `STOCK for now`, saying what should go there.
+4. Change the file names in `src` and `srcset`, keep `sizes`, `width` and `height` (use the new file's pixel size), and write new alt text that names the flowers and, for weddings, the venue.
+5. Remove that photo's entry from `credits/index.html`.
+
+When all of them are replaced, delete the `site-note` paragraph and the footer "Photos are stock images" line from every page, delete `credits/` and the old stock files, and change the gallery labels back (for example "Recent work").
+
+`assets/botanical.svg` is the line illustration the home hero used before the photos went in. Nothing references it now.
 
 ## Design
 
@@ -62,7 +66,7 @@ Editorial and minimal: Cormorant Garamond (light) for headlines, Jost for body a
 
 - Confirm the delivery towns: Lafayette, Youngsville, Broussard, Scott, Carencro, Breaux Bridge (in every page footer band, the inquire page and the JSON-LD in `index.html`).
 - Confirm the occasion lists on `/flowers` match what Amelie makes.
-- Add photos (see above).
+- Replace the stock photos with Amelie's own (see above), then remove the stock-photo notices.
 - Add the client reviews section on the home page once there are quotes with permission (template is commented out in `index.html`).
 - Connect the domain in Vercel (Settings > Domains). `robots.txt`, `sitemap.xml` and the JSON-LD already point to `https://www.thelittleflowersblooms.com`.
 - Add the site to Google Search Console and submit the sitemap.
